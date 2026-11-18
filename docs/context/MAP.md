@@ -1,14 +1,14 @@
 # MAP —— 目录、版本、配置与部署位置
 
-> 更新日期：2026-11-08
-> 核验范围：实现源码、合成样本测试与本机工具链；未读取真实会话正文
+> 更新日期：2026-11-18
+> 核验范围：实现源码、合成样本测试、本机工具链与远端仓库；未读取真实会话正文
 
 ## 目录结构
 
 | 路径 | 用途 | 状态 |
 | --- | --- | --- |
-| `./` | Session Studio 项目根目录 | Git 已初始化；源码位于隔离实现 worktree |
-| `.worktrees/session-studio-implementation/` | 隔离的未提交实现分支 | 应用源码、测试和构建配置；本机 `.git/info/exclude` 忽略 |
+| `./` | Session Studio 项目根目录 | `main` 分支，代码与文档的唯一权威来源；已推送远端 |
+| `.worktrees/session-studio-implementation/` | 本机隔离工作区（可选） | 与 `main` 同提交的 detached HEAD；被根 `.gitignore` 忽略，可随时删除 |
 | `src/` | React/TypeScript 桌面 UI 与前端命令 DTO | 来源设置、会话/项目/候选视图及基本清理确认流程 |
 | `src-tauri/src/` | Rust/Tauri 命令、域模型、SQLite、provider 与导出/清理逻辑 | Pi/Codex 已有合成样本验证；Claude/DeepSeek 待验证 |
 | `src-tauri/tests/` | Rust 集成测试 | 合成 fixture，不访问用户真实会话 |
@@ -39,6 +39,7 @@
 
 ## 配置与部署
 
+- 远端仓库：`https://github.com/HaoRangQi/session-studio`（PUBLIC，默认分支 `main`）；2026-11-18 首次推送提交 `d9a02cf`。
 - 本地 SQLite：Tauri `app_data_dir()` 下的 `session-studio.sqlite3`；数据目录在 GUI 首次运行时创建。
 - Agent 会话数据：保留在各来源原目录；不复制到应用数据库。
 - 分发：自用/小范围内测；不纳入 App Store、公证与签名配置。

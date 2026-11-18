@@ -1,7 +1,7 @@
 # RUNBOOK —— 操作与验证
 
-> 更新日期：2026-11-08
-> 状态：源码实现中；合成样本自动化验证通过；原生 debug GUI 已启动并查看默认路径；真实数据与四源闭环尚未验收
+> 更新日期：2026-11-18
+> 状态：源码已提交并推送 `main`；合成样本自动化验证通过；原生 debug GUI 已启动并查看默认路径；真实数据与四源闭环尚未验收
 
 ## 前置条件
 
@@ -11,12 +11,12 @@
 
 ## 安装依赖
 
-- 前端依赖已在实现 worktree 中通过 `npm install --ignore-scripts` 安装；`npm audit` 当前报告 0 vulnerabilities。
+- 前端依赖已在仓库根目录通过 `npm install --ignore-scripts` 安装；`npm audit` 当前报告 0 vulnerabilities。
 - Rust 依赖由 `src-tauri/Cargo.toml` 管理；Cargo test 与 desktop feature 检查已运行通过。
 
 ## 启动与运行
 
-- 前端开发界面：在实现 worktree 执行 `npm run dev -- --port 1420 --strictPort`，Vite 仅监听 `127.0.0.1:1420`。2026-11-08 重启后 PID 86303 监听；`curl` 返回 Session Studio 页面。Tauri WebView 已实际加载此 dev URL。普通浏览器模式下 `isTauri()` 为 false，不调用来源状态或扫描命令。
+- 前端开发界面：在仓库根目录执行 `npm run dev -- --port 1420 --strictPort`，Vite 仅监听 `127.0.0.1:1420`。2026-11-18 已重新启动并返回 HTTP 200；Tauri WebView 加载此 dev URL 并显示工作区页面。普通浏览器模式下 `isTauri()` 为 false，不调用来源状态或扫描命令。
 - Tauri GUI：使用 `cargo run --manifest-path src-tauri/Cargo.toml --features desktop --bin session-studio` 启动 debug 窗口；本机仅有 Command Line Tools，但此命令已成功编译并显示窗口。修改前已在设置页核对四个默认路径。
 - Tauri GUI 中 `get_sources` 只返回来源状态，不扫描目录；扫描仅由用户点击对应来源的“扫描”按钮触发。Claude Code/DeepSeek 格式未验证，活动检测和 CLI 分析未启用。查看 GUI 时禁止点击扫描。
 

@@ -1,7 +1,7 @@
 # NOW —— 当前状态
 
-> 更新日期：2026-11-08
-> 核验范围：产品设计、项目文档、隔离实现分支与当前构建环境
+> 更新日期：2026-11-18
+> 核验范围：产品设计、项目文档、实现源码与当前构建环境
 
 ## 当前目标
 
@@ -12,7 +12,7 @@
 
 - 已确认产品范围、固定侧栏布局、会话容器级清理安全规则、Markdown/JSON 导出、Agent CLI 分析边界和本地索引策略。
 - 已建立实施计划：[Session Studio 实施计划](../superpowers/plans/2026-11-08-session-studio.md)。
-- 隔离 worktree 中已建立 React/Tauri 桌面壳、Rust 共享域模型、SQLite 元数据索引、默认/自定义来源目录扫描命令、候选查询、导出和清理预览流程；未提交。
+- 仓库根目录已建立 React/Tauri 桌面壳、Rust 共享域模型、SQLite 元数据索引、默认/自定义来源目录扫描命令、候选查询、导出和清理预览流程；2026-11-18 作为首个提交 `d9a02cf` 推送至 `origin/main`，原隔离 worktree 已并回 `main`。
 - 四种来源均解析并显示工具默认目录；用户可选自定义或恢复默认，点击扫描前不读来源目录。Codex 扫描其 CODEX home 下 `sessions/` 与 `archived_sessions/`。
 - Pi 与 Codex（含 `.jsonl.zst`）适配器通过合成样本验证；Claude Code 和 DeepSeek Harness 格式仍待验证。候选页使用独立后端查询。
 - 活动监控和 CLI 分析尚未启用；当前活动快照不可靠，因此清理执行会保守阻止容器。
